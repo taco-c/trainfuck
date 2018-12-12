@@ -1,6 +1,6 @@
-# Trainfuck
+# Trainfuck.py
 
-Trainfuck is a interpreter based on the
+Trainfuck.py is a interpreter that interprets the Trainfuck language which is derived from the
 [Brainfuck](https://en.wikipedia.org/wiki/Brainfuck) language, but the Trainfuck
 language differs in a few ways:
 
@@ -8,7 +8,7 @@ language differs in a few ways:
     for `-`, `>`, and `<`.
 * One more output char: `:`! Colon prints the numerical value of the cell instead
     of the ASCII representation.
-* It doesn't have comma. It's not really needed is it?
+* It doesn't have `,`. It's not really needed is it?
 
 ## How to run
 
@@ -36,9 +36,25 @@ It also supports:
 ```
 or any variations.
 
+## More examples
+
+Take advantage of calculating with big* numbers!
+
+(*Maximum number is 255.)
+
+Multiplication:
+```
++20[->+11<]>:
+```
+
+Divition:
+```
++150[-25>+<]>:
+```
+
 ## Compatibility with Brainfuck
 
-Should be able to execute Brainfuck code as long as:
+Trainfuck is to Brainfuck what C++ is to C: able to interpret the code of its predecessor. Of course not perfectly because that would be boring. Should be able to execute Brainfuck code as long as:
 
 * Code does not rely on Comma.
 * Comments don't contain any numbers or colon (Except in a comment at the top
