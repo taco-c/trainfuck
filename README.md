@@ -28,7 +28,7 @@ that stop you from using something more fun, like `.trainfuck`.
 ## Hello World
 
 ```
-+8[>+4[>++>+3>+3>+<4-]>+>+>->>+[<]<-]>>.>-3.+7..+3.>>.<-.<.+3.-6.-8.>>+.>++.
++72.+29.+7..+3.-67.-12.+55.+24.+3.-6.-8.-67.-23.
 ```
 It also supports:
 ```
