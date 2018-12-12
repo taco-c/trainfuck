@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-""" Trainfuck.
+""" Trainfuck.py
     
     Usage: trainfuck.py <filename> """
 
-""" The meat of Trainfuck. """
+""" The meat of Trainfuck.py """
 def interpret (code):
     code = prepare_code(code)
     cells, cell_ptr, code_ptr = [0], 0, 0
@@ -28,8 +28,8 @@ def interpret (code):
         elif key == ">":
             cell_ptr += value
             
-            if cell_ptr == len(cells):
-                cells.append(0)
+            if cell_ptr >= len(cells):
+                cells += [0 for x in range(1 + value - len(cells))]
         
         elif key == "<":
             cell_ptr = cell_ptr - value if cell_ptr - value > 0 else 0
@@ -51,8 +51,16 @@ def interpret (code):
             if cells[cell_ptr] != 0:
                 code_ptr = loops[code_ptr]
                 continue
+        
+        elif key == "@":
+            cell_ptr = value
+            
+            if cell_ptr >= len(cells):
+                cells += [0 for x in range(1 + value - len(cells))]
 
         code_ptr += 1
+    
+    print(cells)
 
 """ This function writes down the location of all the loops (both the start
     and the end) in the train-/brainfuck file. And then returns his notebook
@@ -82,7 +90,7 @@ def prepare_loops (code):
 """ Trainfuck is picky about its inputs. This function strips off all
     non-essential characters, and returns a list of tuples. """
 def prepare_code (code_str):
-    SYMBOLS = ["+", "-", ">", "<", ".", ":", "[", "]"]
+    SYMBOLS = ["+", "-", ">", "<", ".", ":", "[", "]", "@"]
     NUMBERS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     
     prepared_code = []
@@ -98,13 +106,19 @@ def prepare_code (code_str):
         j = i + 1
         
         if j >= len(code):
-            prepared_code.append((code[i], 1))
+            if code[i] == "@":
+                prepared_code.append((code[i], 0))
+            else:
+                prepared_code.append((code[i], 1))
             i += 1
             
             continue
         
         if code[j] in SYMBOLS:
-            prepared_code.append((code[i], 1))
+            if code[i] == "@":
+                prepared_code.append((code[i], 0))
+            else:
+                prepared_code.append((code[i], 1))
             i += 1
             
             continue
