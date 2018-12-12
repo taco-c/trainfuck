@@ -5,7 +5,7 @@ Trainfuck.py is a interpreter that interprets the Trainfuck language which is de
 language differs in a few ways:
 
 * Numbers! Instead of writing `++++++++++`, you can write `+10`. This also works
-    for `-`, `>`, and `<`.
+    for `-`, `>`, `<`, `.`, and `:`.
 * One more output char: `:`! Colon prints the numerical value of the cell instead
     of the ASCII representation.
 * It doesn't have `,`. It's not really needed is it?
