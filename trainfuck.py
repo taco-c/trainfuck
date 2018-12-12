@@ -2,8 +2,7 @@
 
 """ Trainfuck.
     
-    Usage: trainfuck.py <filename>
-"""
+    Usage: trainfuck.py <filename> """
 
 """ The meat of Trainfuck. """
 def interpret (code):
@@ -36,10 +35,12 @@ def interpret (code):
             cell_ptr = cell_ptr - value if cell_ptr - value > 0 else 0
         
         elif key == ".":
-            print(chr(cells[cell_ptr]), end="")
+            for i in range(value):
+                print(chr(cells[cell_ptr]), end="")
         
         elif key == ":":
-            print(cells[cell_ptr], end="")
+            for i in range(value):
+                print(cells[cell_ptr], end="")
         
         elif key == "[":
             if cells[cell_ptr] == 0:
@@ -53,7 +54,7 @@ def interpret (code):
 
         code_ptr += 1
 
-""" This function writes down the location off all the loops (both the start
+""" This function writes down the location of all the loops (both the start
     and the end) in the train-/brainfuck file. And then returns his notebook
     to the place that asked for it. This is a good boy. """
 def prepare_loops (code):
@@ -66,6 +67,10 @@ def prepare_loops (code):
             loop_starts.append(i)
         
         elif key == "]":
+            if loop_starts == []:
+                print("Error at {}:'{}', no matching [.".format(i, key))
+                exit(1)
+            
             start = loop_starts.pop()
             loops[i] = start
             loops[start] = i
