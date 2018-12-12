@@ -12,8 +12,12 @@ language differs in a few ways:
 
 ## How to run
 
-The only part of this README you will read:
+You will need Python 3. That's it.
 
+```
+python trainfuck.py <filename>
+```
+or just
 ```
 ./trainfuck.py <filename>
 ```
