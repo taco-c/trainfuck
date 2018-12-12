@@ -53,11 +53,8 @@ def interpret (code):
                 continue
         
         elif key == "@":
-            cell_ptr = value
-            
-            if cell_ptr >= len(cells):
-                cells += [0 for x in range(1 + value - len(cells))]
-
+            cell_ptr = 0
+        
         code_ptr += 1
     
     print(cells)
