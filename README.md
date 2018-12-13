@@ -8,6 +8,7 @@ language differs in a few ways:
     for `-`, `>`, `<`, `.`, and `:`.
 * One more output char: `:`! Colon prints the numerical value of the cell instead
     of the ASCII representation.
+* `@` sets the data pointer to `0`. So you can can go to any numbered cell from anywhere using ie. `@>200`.
 * It doesn't have `,`. It's not really needed is it?
 
 ## How to run
